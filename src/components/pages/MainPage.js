@@ -5,7 +5,7 @@ import DetailModal from "../modal/DetailModal";
 const MainPage = () => {
   return (
     <div>
-      메인 페이지입니다.
+      메인 페이지입니다!
       <Routes>
         <Route path="/detail/:postid" element={<DetailModal />} />
       </Routes>
