@@ -76,7 +76,7 @@ const HeaderNavBar = () => {
                 setUnderBarCount("center");
               }}
             >
-              <IconButton iconName={"faFire"} to={"/"} size={"lg"}/>
+              <IconButton iconName={"faFire"} to={"/"} size={"lg"} />
             </HeightBox>
             <HeightBox
               ref={SendIconBoxRef}
@@ -108,6 +108,9 @@ const Header = styled.section`
   height: 60px;
 
   background-color: #fff;
+  @media ${devices.mobileL} {
+    height: 99px;
+  }
 `;
 
 const NavBarDiv = styled.div`
@@ -115,6 +118,9 @@ const NavBarDiv = styled.div`
   flex-direction: row;
   justify-content: space-around;
   margin: 0 20px;
+  @media ${devices.mobileL} {
+    flex-direction: column-reverse;
+  }
 `;
 
 const LeftSideBox = styled.div`
@@ -137,6 +143,9 @@ const CenterBox = styled.div`
   @media ${devices.laptop} {
     width: 50%;
   }
+  @media ${devices.mobileL} {
+    width: 100%;
+  }
 `;
 
 const HeightBox = styled.div`
@@ -154,6 +163,10 @@ const RightSideBox = styled.div`
   @media ${devices.laptop} {
     width: 50%;
   }
+  @media ${devices.mobileL} {
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 const FlexBox = styled.div`
@@ -161,6 +174,14 @@ const FlexBox = styled.div`
   align-content: center;
   width: 100%;
   margin: 1rem 0;
+  @media ${devices.laptop} {
+    justify-content:end;
+  }
+  @media ${devices.mobileL} {
+    width: 100%;
+    margin: 10px 0 0;
+    justify-content: center;
+  }
 `;
 
 const SignInButton = styled.div`
