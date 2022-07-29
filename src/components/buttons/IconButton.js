@@ -1,10 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCirclePlus,
-  faArrowCircleUp,
-} from "@fortawesome/free-solid-svg-icons";
 
 const IconButton = ({ string, iconName, to, size, color }) => {
   const navigate = useNavigate();
