@@ -36,3 +36,4 @@ const IconButton = ({ string, iconName, to, size, color }) => {
 };
 
 export default IconButton;
+
