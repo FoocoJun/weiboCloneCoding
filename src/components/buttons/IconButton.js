@@ -18,10 +18,15 @@ const IconButton = ({ string, iconName, to, size, color }) => {
   return (
     <>
       {/* icon을 불러온 이후에만 띄워준다. */}
-      {usingIcon && to &&(
+      {usingIcon && to && (
         <IconHoverBox
           onClick={() => {
             navigate(to);
+            window.scrollTo({
+              top: 100,
+              left: 100,
+              behavior: "smooth",
+            });
           }}
         >
           <FontAwesomeIcon icon={usingIcon} size={size ? size : "1x"} />
@@ -43,7 +48,7 @@ const IconHoverBox = styled.div`
   border-radius: 4px;
   &:hover {
     background-color: rgba(0, 0, 0, 0.15);
-    color:#ff8200;
+    color: #ff8200;
   }
 `;
 

@@ -76,7 +76,7 @@ const HeaderNavBar = () => {
                 setUnderBarCount("center");
               }}
             >
-              <IconButton iconName={"faFire"} to={"/"} size={"lg"} />
+              <IconButton iconName={"faFire"} to={"/"} size={"lg"}/>
             </HeightBox>
             <HeightBox
               ref={SendIconBoxRef}
