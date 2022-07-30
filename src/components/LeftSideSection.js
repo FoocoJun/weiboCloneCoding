@@ -22,7 +22,7 @@ const Box = styled.div`
   top: 60px;
 
   width: 182px;
-  height: 100vh;
+  height: ${window.innerHeight - 61}px;
   border: 2px solid lightgray;
 
   @media ${devices.mobileL} {
