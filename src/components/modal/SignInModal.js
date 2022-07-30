@@ -40,7 +40,7 @@ const SignInModal = () => {
                 placeholder="会员帐号"
                 style={{
                   width: "200px",
-                  height: "2vh",
+                  height: "20px",
                   margin: "9px 0px 0px 10px",
                   border: "none",
                 }}
@@ -70,7 +70,7 @@ const SignInModal = () => {
                 placeholder="请输入密码"
                 style={{
                   width: "200px",
-                  height: "2vh",
+                  height: "20px",
                   margin: "9px 0px 0px 10px",
                   border: "none",
                 }}

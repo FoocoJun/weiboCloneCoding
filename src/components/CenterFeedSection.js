@@ -1,18 +1,38 @@
 import React from "react";
 import styled from "styled-components";
 import { devices } from "../device";
+import Feed from "./feeds/Feed";
+
 
 const CenterFeedSection = () => {
-  return <Box>중앙 피드박스 입니다.</Box>;
+  return (
+    <Box>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+      <Feed/>
+
+    </Box>
+  );
 };
 
 const Box = styled.div`
   display: flex;
+  flex-direction: column;
 
   width: 50%;
-  height: 4500px;
   margin: 0 10px;
-  background-color: #fff;
   @media ${devices.laptop} {
     width: 100%;
   }

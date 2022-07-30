@@ -1,3 +1,4 @@
+// 잡것들.
 // Actions
 const SCROLL = "scroll/KEEP";
 

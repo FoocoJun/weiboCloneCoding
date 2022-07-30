@@ -26,7 +26,7 @@ const Box = styled.div`
   position: sticky;
   top: 60px;
 
-  width: 280px;
+  width: 282px;
   height: ${window.innerHeight - 80}px;
 
   @media ${devices.laptop} {

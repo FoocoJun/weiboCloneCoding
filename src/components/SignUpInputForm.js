@@ -15,11 +15,11 @@ const SignUpInputForm = () => {
       </InputCard>
       <InputCard>
         <p>비밀번호 확인 :</p>
-        <input type="password" placeholder="비밀번호 확인하라 해" />
+        <input type="password" placeholder="비밀번호 확인하라 해"/>
       </InputCard>
       <InputCard>
         <p>프로필 사진 :</p>
-        <input type="file" />
+        <input type="file" multiple/>
       </InputCard>
       <InputCard>
         <p></p>

@@ -61,7 +61,6 @@ const MainFlexSection = styled.div`
   width: 90%;
   max-width: 1140px;
   margin: 0 auto;
-  height: 4500px;
 `;
 
 export default MainPage;
