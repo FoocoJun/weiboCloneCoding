@@ -5,10 +5,11 @@ import MainPage from "./components/pages/MainPage";
 import SignUpPage from "./components/pages/SignUpPage";
 import PostPage from "./components/pages/PostPage";
 import NotFoundPage from "./components/pages/NotFoundPage";
+import styled from "styled-components";
 
 function App() {
   return (
-    <div className="App">
+    <AppBg>
       <Routes>
         {/* 메인 페이지 */}
         {/* 분기점으로서의 App.js // 0. 자기 자신은 index로 path 표현 가능 */}
@@ -23,8 +24,13 @@ function App() {
         {/* 위의 경로를 제외한 모든 주소를 NotFound로 제공 */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </div>
+    </AppBg>
   );
 }
+
+const AppBg = styled.div`
+  background-color: #f5f5f5;
+  height: 100vh;
+`;
 
 export default App;
