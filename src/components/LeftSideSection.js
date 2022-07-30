@@ -66,7 +66,7 @@ const Box = styled.div`
   top: 61px;
 
   width: 182px;
-  height: ${window.innerHeight - 120}px;
+  height: ${window.innerHeight - 80}px;
   border-radius: 4px 0 0 4px;
   background-color:#fff;
 

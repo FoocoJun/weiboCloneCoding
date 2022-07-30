@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import SignUpInputForm from "../SignUpInputForm";
 import ToSignInBox from "../ToSignInBox";
+import { devices } from "../../device";
+import Copywrite from "../Copywrite";
 
 const SignUpPage = () => {
   return (
@@ -32,10 +34,20 @@ const SignUpPage = () => {
             <span>Personal Account</span>
           </SignUpCardHeader>
           <SignUpCardBody>
-          <SignUpInputForm/>
-          <ToSignInBox/>
+            <SignUpInputForm />
+            <Vl />
+            <ToSignInBox />
           </SignUpCardBody>
         </SignUpPageCard>
+        {/* 카피라이트 */}
+        <CopywriteCard>
+          <Copywrite
+            string={
+              "Beijing Weibo Internet Technology Co., Ltd. 京网文〔2020〕4754-886号 京ICP备12002058号-2"
+            }
+          />
+          <Copywrite string={"Copyright © 2009-2022 WEIBO"} />
+        </CopywriteCard>
       </SignUpPageBox>
     </SignUpPageSection>
   );
@@ -90,12 +102,22 @@ const SignUpPageCard = styled.div`
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 1px 1px 2px 1px #cdcdcd;
+  @media ${devices.mobileL} {
+    height: 650px;
+  }
+`;
+const CopywriteCard = styled.div`
+  width: 90%;
+  min-width: 270px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const SignUpCardHeader = styled.div`
   width: 100%;
   height: 82px;
-  
+
   display: flex;
   align-items: center;
   span {
@@ -111,6 +133,21 @@ const SignUpCardBody = styled.div`
 
   display: flex;
   justify-content: space-between;
-`
+
+  @media ${devices.mobileL} {
+    flex-direction: column;
+    height: 510px;
+  }
+`;
+
+const Vl = styled.div`
+  border-left: 1px solid #cdcdcd;
+  height: 300px;
+  border-radius: 1px;
+  margin-top: 20px;
+  @media ${devices.mobileL} {
+    display: none;
+  }
+`;
 
 export default SignUpPage;
