@@ -4,12 +4,14 @@ import IconButton from "./buttons/IconButton";
 import { devices } from "../device";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const HeaderNavBar = () => {
   const [underBarCount, setUnderBarCount] = React.useState("Bar/center");
   const TubeIconBoxRef = React.useRef(null);
   const MainIconBoxRef = React.useRef(null);
   const SendIconBoxRef = React.useRef(null);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     //부끄럽다. 알고리즘 공부하자..
@@ -90,7 +92,7 @@ const HeaderNavBar = () => {
           <RightSideBox>
             <FlexBox>
               <SignInButton>로그인</SignInButton>
-              <SignUpButton>회원가입</SignUpButton>
+              <SignUpButton onClick={()=>{navigate('/signup')}}>회원가입</SignUpButton>
               <PostButton>
                 <PostIcon icon={faPenToSquare} color={"white"} size={"1x"} />
               </PostButton>
