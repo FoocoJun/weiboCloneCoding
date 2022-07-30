@@ -11,8 +11,8 @@ display: flex;
 
 width: 50%;
 height: 100vh;
-border: 2px solid lightgray;
 margin: 0 10px;
+background-color:#fff;
 @media ${devices.laptop} {
     width:100%;
   }
