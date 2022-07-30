@@ -30,7 +30,7 @@ function App() {
 
 const AppBg = styled.div`
   background-color: #f5f5f5;
-  height: 100vh;
+  height: 4500px;
 `;
 
 export default App;

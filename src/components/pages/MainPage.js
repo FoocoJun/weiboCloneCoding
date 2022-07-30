@@ -16,6 +16,7 @@ const MainPage = () => {
       <CenterFeedSection />
       <RightSideSection />
       </MainFlexSection>
+
       메인 페이지입니다!
       <Routes>
         <Route path="/detail/:postid" element={<DetailModal />} />
@@ -27,9 +28,11 @@ const MainPage = () => {
 const MainFlexSection= styled.div`
 display:flex;
 justify-content: center;
+padding-top:10px;
 width: 90%;
 max-width: 1140px;
 margin: 0 auto;
+height: 4500px
 
 
 `

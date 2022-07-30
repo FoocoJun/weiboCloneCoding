@@ -128,7 +128,7 @@ const LeftSideBox = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: end;
-  width: 25%;
+  width: 22.5%;
   @media ${devices.laptop} {
     display: none;
   }
@@ -159,7 +159,7 @@ const RightSideBox = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  width: 25%;
+  width: 27.9%;
   @media ${devices.laptop} {
     width: 50%;
   }
@@ -175,7 +175,7 @@ const FlexBox = styled.div`
   width: 100%;
   margin: 1rem 0;
   @media ${devices.laptop} {
-    justify-content:end;
+    justify-content: end;
   }
   @media ${devices.mobileL} {
     width: 100%;
@@ -184,56 +184,40 @@ const FlexBox = styled.div`
   }
 `;
 
-const SignInButton = styled.div`
+const NavBarButton = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  width: 60px;
+
   height: 30px;
+  width: 60px;
   border-radius: 15px;
   margin: 0px 5px;
 
   text-align: center;
   line-height: 30px;
+
+  cursor: pointer;
+`;
+
+const SignInButton = styled(NavBarButton)`
   font-size: 14px;
 
   background: #ff8200;
   color: #fff;
-
-  cursor: pointer;
 `;
-const SignUpButton = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  width: 60px;
-  height: 30px;
-  border-radius: 15px;
-  margin: 0px 5px;
-
-  text-align: center;
-  line-height: 30px;
+const SignUpButton = styled(NavBarButton)`
   font-size: 14px;
 
   background: #fff;
   color: #cdcdcd;
-
-  cursor: pointer;
 `;
 
-const PostButton = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
+const PostButton = styled(NavBarButton)`
   width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  margin: 0px 5px;
 
   background: #ff8200;
   color: #fff;
-
-  cursor: pointer;
 
   background: linear-gradient(180deg, #f87c45, #f36126);
 `;

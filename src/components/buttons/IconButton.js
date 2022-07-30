@@ -49,6 +49,7 @@ const IconHoverBox = styled.div`
   width: 70px;
   height: 38px;
   border-radius: 4px;
+  cursor: pointer;
   &:hover {
     background-color: #F2F2F2;
     color: #ff8200;
