@@ -1,16 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { devices } from "../device";
 
-import InfoBox from "./InfoBox"
+import InfoBox from "./InfoBox";
+import SignInModal from "./modal/SignInModal";
 
 const RightSideSection = () => {
+  const scrollPosition = useSelector((state) => state.clutters.scrollPosition);
+  console.log(scrollPosition);
   return (
     <Box>
-      <Countainer>
-        <InfoBox/>
-
-
+      <Countainer
+        style={{ display: `${scrollPosition < 85 ? "flex" : "none"}` }}
+      >
+        <SignInModal />
+        <div />
+        <InfoBox />
       </Countainer>
     </Box>
   );
@@ -32,7 +38,7 @@ const Box = styled.div`
 const Countainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
 export default RightSideSection;

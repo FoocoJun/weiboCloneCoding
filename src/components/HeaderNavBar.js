@@ -108,6 +108,7 @@ const Header = styled.section`
   position: sticky;
   top: 0px;
   height: 60px;
+  z-index:999;
 
   background-color: #fff;
   @media ${devices.mobileL} {

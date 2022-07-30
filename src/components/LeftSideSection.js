@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 import { devices } from "../device";
 import IconButton from "./buttons/IconButton";
 
 const LeftSideSection = () => {
+  const scrollPosition = useSelector((state) => state.clutters.scrollPosition);
+  console.log(scrollPosition);
   const [leftBarCount, setLeftBarCount] = React.useState("0");
   const MainIconBoxRef = React.useRef(null);
   const TimeIconBoxRef = React.useRef(null);
@@ -25,8 +28,8 @@ const LeftSideSection = () => {
   }, [leftBarCount]);
 
   return (
-      <Box>
-        <FlexBox>
+      <Box style={{ backgroundColor: `${scrollPosition < 85 ? "#fff" : "#f5f5f5"}` }}>
+        <FlexBox style={{ display: `${scrollPosition < 85 ? "flex" : "none"}` }}>
           <div ref={MainIconBoxRef} onClick={()=>{setLeftBarCount("0")}}>
           <IconButton
             iconName={"faFire"}
