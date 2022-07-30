@@ -172,7 +172,7 @@ const InfoBox = () => {
   );
 };
 
-const FirstFooter = styled.text`
+const FirstFooter = styled.p`
   display: flex;
   flex-direction: row;
   font-size: 11px;
@@ -181,7 +181,7 @@ const FirstFooter = styled.text`
   color: #606060;
 `;
 
-const FirstUtility = styled.text`
+const FirstUtility = styled.p`
   display: flex;
   flex-direction: row;
   color: #939393;
@@ -189,7 +189,7 @@ const FirstUtility = styled.text`
   line-height: 6px;
 `;
 
-const SecondFooter = styled.text`
+const SecondFooter = styled.p`
   display: flex;
   flex-direction: row;
   font-size: 11px;
@@ -197,7 +197,7 @@ const SecondFooter = styled.text`
   color: #606060;
 `;
 
-const SecondUtility = styled.text`
+const SecondUtility = styled.p`
   display: flex;
   flex-direction: row;
   color: #939393;
@@ -205,7 +205,7 @@ const SecondUtility = styled.text`
   line-height: 6px;
 `;
 
-const ThirdFooter = styled.text`
+const ThirdFooter = styled.p`
   display: flex;
   flex-direction: row;
   font-size: 11px;
@@ -213,7 +213,7 @@ const ThirdFooter = styled.text`
   color: #606060;
 `;
 
-const ThirdUtility = styled.text`
+const ThirdUtility = styled.p`
   display: flex;
   flex-direction: row;
   color: #939393;
@@ -221,7 +221,7 @@ const ThirdUtility = styled.text`
   line-height: 6px;
 `;
 
-const ForthFooter = styled.text`
+const ForthFooter = styled.p`
   display: flex;
   flex-direction: row;
   font-size: 11px;
@@ -229,7 +229,7 @@ const ForthFooter = styled.text`
   color: #606060;
 `;
 
-const ForthUtility = styled.text`
+const ForthUtility = styled.p`
   display: flex;
   flex-direction: row;
   color: #939393;
@@ -237,7 +237,7 @@ const ForthUtility = styled.text`
   line-height: 6px;
 `;
 
-const FifthFooter = styled.text`
+const FifthFooter = styled.p`
   display: flex;
   flex-direction: row;
   font-size: 11px;

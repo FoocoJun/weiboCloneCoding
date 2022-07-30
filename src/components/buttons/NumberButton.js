@@ -8,10 +8,10 @@ const NumberButton = ({ number, string }) => {
   return (
     <>
       <NumberButtonAbsoluteBox>
-        <div class="numdiv">
+        <div className="numdiv">
           <p>{number}</p>
         </div>
-        <div class="stringdiv">
+        <div className="stringdiv">
           <Link to={"/"} style={{ textDecoration: "none", color: "#0a8cd2" }}>
             {string}
           </Link>
