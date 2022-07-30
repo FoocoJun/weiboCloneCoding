@@ -5,6 +5,7 @@ import CenterFeedSection from "../CenterFeedSection";
 import HeaderNavBar from "../HeaderNavBar";
 import LeftSideSection from "../LeftSideSection";
 import DetailModal from "../modal/DetailModal";
+import SignInModal from "../modal/SignInModal";
 import RightSideSection from "../RightSideSection";
 
 const MainPage = () => {
@@ -20,6 +21,7 @@ const MainPage = () => {
       메인 페이지입니다!
       <Routes>
         <Route path="/detail/:postid" element={<DetailModal />} />
+        <Route path="/signin" element={<SignInModal />} />
       </Routes>
     </div>
   );

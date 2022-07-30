@@ -91,7 +91,7 @@ const HeaderNavBar = () => {
           </CenterBox>
           <RightSideBox>
             <FlexBox>
-              <SignInButton>로그인</SignInButton>
+              <SignInButton onClick={()=>{navigate('/signin')}}>로그인</SignInButton>
               <SignUpButton onClick={()=>{navigate('/signup')}}>회원가입</SignUpButton>
               <PostButton>
                 <PostIcon icon={faPenToSquare} color={"white"} size={"1x"} />
