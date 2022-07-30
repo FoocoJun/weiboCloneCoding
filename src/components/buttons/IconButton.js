@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
-const IconButton = ({ string, iconName, to, size, color }) => {
+const IconButton = ({ string, iconName, to, size, color, width, margin, fontFamily }) => {
   const navigate = useNavigate();
   const [usingIcon, setUsingIcon] = React.useState(null);
 
@@ -28,9 +28,12 @@ const IconButton = ({ string, iconName, to, size, color }) => {
               behavior: "smooth",
             });
           }}
+          style={{ width:`${width ? width : "70px"}`}}
         >
           <FontAwesomeIcon icon={usingIcon} size={size ? size : "1x"} />
+          <div style={{margin: `${ margin ? margin : "0"}`, fontFamily: `${fontFamily? fontFamily : "inherit"}`}}>
           {string}
+          </div>
         </IconHoverBox>
       )}
     </>
@@ -47,7 +50,7 @@ const IconHoverBox = styled.div`
   height: 38px;
   border-radius: 4px;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: #F2F2F2;
     color: #ff8200;
   }
 `;
