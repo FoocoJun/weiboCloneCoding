@@ -9,6 +9,7 @@ import {
   faCircleExclamation,
   faCircleUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { ColumnFlexDiv } from "../styled";
 
 const InfoBox = () => {
   return (
@@ -17,7 +18,7 @@ const InfoBox = () => {
         <Icon
           icon={faHeadset}
           style={{
-            margin: "13px 6px 0px 0px",
+            margin: "4px 6px 0px 0px",
           }}
         />
         <p>帮助中心</p>
@@ -44,7 +45,7 @@ const InfoBox = () => {
         <Icon
           icon={faHeart}
           style={{
-            margin: "13px 6px 0px 0px",
+            margin: "4px 6px 0px 0px",
           }}
         />
         <p>合作&服务 </p>
@@ -78,7 +79,7 @@ const InfoBox = () => {
         <Icon
           icon={faCircleExclamation}
           style={{
-            margin: "13px 6px 0px 0px",
+            margin: "4px 6px 0px 0px",
           }}
         />
         <p>举报中心 </p>
@@ -112,7 +113,7 @@ const InfoBox = () => {
         <Icon
           icon={faCircleUser}
           style={{
-            margin: "13px 6px 0px 0px",
+            margin: "4px 6px 0px 0px",
           }}
         />
         <p>关于微博 </p>
@@ -176,7 +177,9 @@ const FirstFooter = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 11px;
-  line-height: 15px;
+  line-height: 1rem;
+  height:1.2rem;
+  margin-top:.7rem;
 
   color: #606060;
 `;
@@ -186,7 +189,7 @@ const FirstUtility = styled.div`
   flex-direction: row;
   color: #939393;
   font-size: 10px;
-  line-height: 6px;
+  line-height: 1rem;
 `;
 
 const SecondFooter = styled.div`
@@ -195,6 +198,8 @@ const SecondFooter = styled.div`
   font-size: 11px;
   line-height: 15px;
   color: #606060;
+  height:1.2rem;
+  margin-top:.7rem;
 `;
 
 const SecondUtility = styled.div`
@@ -202,15 +207,17 @@ const SecondUtility = styled.div`
   flex-direction: row;
   color: #939393;
   font-size: 10px;
-  line-height: 6px;
+  line-height: 1rem;
 `;
 
 const ThirdFooter = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 11px;
-  line-height: 15px;
+  line-height: 1rem;
   color: #606060;
+  height:1.2rem;
+  margin-top:.7rem;
 `;
 
 const ThirdUtility = styled.div`
@@ -218,15 +225,17 @@ const ThirdUtility = styled.div`
   flex-direction: row;
   color: #939393;
   font-size: 10px;
-  line-height: 6px;
+  line-height: 1rem;
 `;
 
 const ForthFooter = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 11px;
-  line-height: 15px;
+  line-height: 1rem;
   color: #606060;
+  height:1.2rem;
+  margin-top:.7rem;
 `;
 
 const ForthUtility = styled.div`
@@ -234,14 +243,14 @@ const ForthUtility = styled.div`
   flex-direction: row;
   color: #939393;
   font-size: 10px;
-  line-height: 6px;
+  line-height: 1rem;
 `;
 
 const FifthFooter = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 11px;
-  line-height: 15px;
+  line-height: 1rem;
   color: #606060;
 `;
 
