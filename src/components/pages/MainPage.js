@@ -38,6 +38,7 @@ const MainPage = () => {
   })
   return (
     <div>
+      
       <HeaderNavBar />
       <MainFlexSection>
         <LeftSideSection />

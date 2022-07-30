@@ -23,7 +23,7 @@ const SignUpPage = () => {
                 margin: "8px 0 0",
               }}
             >
-              <em>微博</em>
+              <em>微道</em>
             </span>
           </LogoBox>
         </SignUpPageImageBox>

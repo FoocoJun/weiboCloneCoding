@@ -61,7 +61,7 @@ const HeaderNavBar = () => {
         <NavBarDiv>
           <LeftSideBox>
             <img src={process.env.PUBLIC_URL + "/pngwing.png"} height="32px" />
-            <h3>웨이보</h3>
+            <em>微道</em>
           </LeftSideBox>
           <CenterBox>
             <HeightBox
@@ -91,8 +91,20 @@ const HeaderNavBar = () => {
           </CenterBox>
           <RightSideBox>
             <FlexBox>
-              <SignInButton onClick={()=>{navigate('/signin')}}>로그인</SignInButton>
-              <SignUpButton onClick={()=>{navigate('/signup')}}>회원가입</SignUpButton>
+              <SignInButton
+                onClick={() => {
+                  navigate("/signin");
+                }}
+              >
+                로그인
+              </SignInButton>
+              <SignUpButton
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
+                회원가입
+              </SignUpButton>
               <PostButton>
                 <PostIcon icon={faPenToSquare} color={"white"} size={"1x"} />
               </PostButton>
@@ -108,7 +120,7 @@ const Header = styled.section`
   position: sticky;
   top: 0px;
   height: 60px;
-  z-index:999;
+  z-index: 999;
 
   background-color: #fff;
   @media ${devices.mobileL} {
@@ -134,6 +146,10 @@ const LeftSideBox = styled.div`
   width: 22.5%;
   @media ${devices.laptop} {
     display: none;
+  }
+  em {
+    font-size: 1.5rem;
+    font-weight:bolder;
   }
 `;
 

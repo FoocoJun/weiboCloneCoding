@@ -12,9 +12,8 @@ const RightSideSection = () => {
   return (
     <Box>
       <Countainer
-        style={{ display: `${scrollPosition < 85 ? "flex" : "none"}` }}
+        style={{ display: `${scrollPosition < 60 ? "flex" : "none"}` }}
       >
-        <SignInModal />
         <div />
         <InfoBox />
       </Countainer>

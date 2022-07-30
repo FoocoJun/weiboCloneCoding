@@ -28,8 +28,8 @@ const LeftSideSection = () => {
   }, [leftBarCount]);
 
   return (
-      <Box style={{ backgroundColor: `${scrollPosition < 85 ? "#fff" : "#f5f5f5"}` }}>
-        <FlexBox style={{ display: `${scrollPosition < 85 ? "flex" : "none"}` }}>
+      <Box style={{ backgroundColor: `${scrollPosition < 60 ? "#fff" : "#f5f5f5"}` }}>
+        <FlexBox style={{ display: `${scrollPosition < 60 ? "flex" : "none"}` }}>
           <div ref={MainIconBoxRef} onClick={()=>{setLeftBarCount("0")}}>
           <IconButton
             iconName={"faFire"}
