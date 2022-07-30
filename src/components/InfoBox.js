@@ -246,4 +246,5 @@ const FifthFooter = styled.div`
 `;
 
 const Icon = styled(FontAwesomeIcon)``;
+
 export default InfoBox;
