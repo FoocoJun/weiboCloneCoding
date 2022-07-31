@@ -18,9 +18,6 @@ function App() {
         <Route path="/*" element={<MainPage />} />
         {/* 회원가입 페이지 */}
         <Route path="/signup" element={<SignUpPage />} />
-
-        {/* 잘못 된 접근 페이지 */}
-        {/* 위의 경로를 제외한 모든 주소를 NotFound로 제공 */}
       </Routes>
     </AppBg>
   );

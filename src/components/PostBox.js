@@ -9,25 +9,34 @@ const PostBox = () => {
   const [postUploadImg, setPostUploadImg] = React.useState([]);
   const [img, setImg] = React.useState(""); //이미지 미리보기
   const [imgs, setImgs] = React.useState([]); //이미지들 미리보기
-  const AttentionRef = React.useRef();
-  const imagePreviewNameRef = React.useRef();
+  const attentionRef = React.useRef(null);
+  const imagePreviewNameRef = React.useRef(null);
 
   const [postCurrentLength, setPostCurrentLength] = React.useState(11); //이미지들 미리보기
 
   const checkPictureCorrect = (e) => {
-    AttentionRef.current.innerText = null;
+    imagePreviewNameRef.current.style.width = "150px";
+    attentionRef.current.style.width = "150px";
+    if (window.innerWidth < 500) {
+      imagePreviewNameRef.current.style.width = "90px";
+      attentionRef.current.style.width = "90px";
+    }
+    attentionRef.current.innerText = null;
     imagePreviewNameRef.current.innerText = null;
     setPostUploadImg(null);
     setImg(null);
 
     const correctForm = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
     if (e.target.files[0]?.size > 3 * 1024 * 1024) {
-      AttentionRef.current.innerText = "파일 사이즈는 3MB까지만 가능합니다.";
+      imagePreviewNameRef.current.style.width = "0px";
+      attentionRef.current.innerText = "파일 사이즈는 3MB까지만 가능합니다.";
       return;
     } else if (!e.target?.files[0]?.name.match(correctForm)) {
-      AttentionRef.current.innerText = "이미지 파일만 업로드 가능합니다.";
+      imagePreviewNameRef.current.style.width = "0px";
+      attentionRef.current.innerText = "이미지 파일만 업로드 가능합니다.";
       return;
     }
+    attentionRef.current.style.width = "0px";
 
     let array = Array.from(e.target.files);
     let copyPreview = [...array];
@@ -64,9 +73,9 @@ const PostBox = () => {
         <PostBoxFooter>
           <label htmlFor="postImage">
             <FontAwesomeIcon icon={faImage} size={"xl"} />
-            <img src={img} />
+            {img && <img src={img} />}
             <div ref={imagePreviewNameRef}></div>
-            <span ref={AttentionRef}></span>
+            <span ref={attentionRef}></span>
           </label>
           <input
             id="postImage"
@@ -132,22 +141,29 @@ const PostBoxFooter = styled(RowFlexDiv)`
     img {
       margin-left: 5px;
       width: 24px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
     }
 
     div {
       margin-left: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       @media ${devices.mobileL} {
-        width: 50px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        width: 0px;
       }
     }
     span {
-      margin-left: 5px;
       color: red;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       @media ${devices.mobileL} {
-        display: none;
+        width: 90px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }

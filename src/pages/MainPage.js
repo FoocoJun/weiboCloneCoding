@@ -51,7 +51,6 @@ const MainPage = () => {
       <Routes>
         <Route path="/detail/:postid" element={<DetailModal />} />
         <Route path="/signin" element={<SignInModal />} />
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
