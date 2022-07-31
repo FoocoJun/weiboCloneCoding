@@ -31,6 +31,10 @@ const PostBox = () => {
       imagePreviewNameRef.current.style.width = "0px";
       attentionRef.current.innerText = "파일 사이즈는 3MB까지만 가능합니다.";
       return;
+    } else if (!e.target?.files[0]) {
+      imagePreviewNameRef.current.style.width = "0px";
+      attentionRef.current.innerText = "";
+      return;
     } else if (!e.target?.files[0]?.name.match(correctForm)) {
       imagePreviewNameRef.current.style.width = "0px";
       attentionRef.current.innerText = "이미지 파일만 업로드 가능합니다.";
@@ -58,7 +62,7 @@ const PostBox = () => {
   };
 
   return (
-    <form>
+    <form onSubmit={()=>{console.log(img)}}>
       <PostBoxCard>
         <PostBoxHeader>有什么新鲜事想告诉大家？</PostBoxHeader>
         <PostBoxBody>
@@ -82,7 +86,7 @@ const PostBox = () => {
             type={"file"}
             accept={"image/*"}
             onChange={checkPictureCorrect}
-          />
+          />          
           <button>올리기</button>
         </PostBoxFooter>
       </PostBoxCard>
