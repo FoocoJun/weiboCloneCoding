@@ -3,13 +3,16 @@ import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
 import styled from "styled-components";
-import { keepScrollPosition } from "../../redux/modules/clutters";
-import CenterFeedSection from "../CenterFeedSection";
-import HeaderNavBar from "../HeaderNavBar";
-import LeftSideSection from "../LeftSideSection";
-import DetailModal from "../modal/DetailModal";
-import SignInModal from "../modal/SignInModal";
-import RightSideSection from "../RightSideSection";
+import { keepScrollPosition } from "../redux/modules/clutters";
+import CenterFeedSection from "../components/main/CenterFeedSection";
+import HeaderNavBar from "../components/main/HeaderNavBar";
+import LeftSideSection from "../components/main/LeftSideSection";
+import DetailModal from "../components/modal/DetailModal";
+import SignInModal from "../components/modal/SignInModal";
+
+import RightSideSection from "../components/main/RightSideSection";
+import NotFoundPage from "./NotFoundPage";
+import { devices } from "../device";
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -45,7 +48,6 @@ const MainPage = () => {
         <CenterFeedSection />
         <RightSideSection/>
       </MainFlexSection>
-      메인 페이지입니다!
       <Routes>
         <Route path="/detail/:postid" element={<DetailModal />} />
         <Route path="/signin" element={<SignInModal />} />
@@ -61,6 +63,9 @@ const MainFlexSection = styled.div`
   width: 90%;
   max-width: 1140px;
   margin: 0 auto;
+  @media ${devices.mobileL} {
+    width: 100%;
+  }
 `;
 
 export default MainPage;

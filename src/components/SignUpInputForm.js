@@ -3,26 +3,89 @@ import styled from "styled-components";
 import { devices } from "../device";
 
 const SignUpInputForm = () => {
+  const [isPictureCorrectForm, setIsPictureCorrectForm] = React.useState(false);
+  const [profileUploadImg, setProfileUploadImg] = React.useState([]);
+  const [img, setImg] = React.useState(""); //이미지 미리보기
+  const [imgs, setImgs] = React.useState([]); //이미지들 미리보기
+  const SignUpAttentionRef = React.useRef();
+  const imagePreviewNameRef = React.useRef();
+
+  const checkPictureCorrect = (e) => {
+    SignUpAttentionRef.current.innerText = null;
+    imagePreviewNameRef.current.innerText = null;
+    setProfileUploadImg(null);
+    setImg(null);
+
+    const correctForm = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
+    if (e.target.files[0]?.size > 3 * 1024 * 1024) {
+      SignUpAttentionRef.current.innerText =
+        "파일 사이즈는 3MB까지만 가능합니다.";
+      return;
+    } else if (!e.target?.files[0]) {
+      imagePreviewNameRef.current.style.width = "0px";
+      SignUpAttentionRef.current.innerText = "";
+      return;
+    } else if (!e.target?.files[0]?.name.match(correctForm)) {
+      imagePreviewNameRef.current.style.width = "0px";
+      SignUpAttentionRef.current.innerText = "이미지 파일만 업로드 가능합니다.";
+      return;
+    }
+
+    let array = Array.from(e.target.files);
+    let copyPreview = [...array];
+    setProfileUploadImg(copyPreview); //업로드 원본 파일'들' state : 추후 게시글 다중 업로드
+    console.log(copyPreview);
+    imagePreviewNameRef.current.innerText = copyPreview[0].name;
+
+    for (let i = 0; i < array.length; i++) {
+      const reader = new FileReader();
+      reader.readAsDataURL(array[i]);
+      reader.onload = (e) => {
+        setImg(e.target.result); //미리보기 이미지 state
+
+        //여러 사진의 DataURL 결과물들을 imgs state에 담음
+        let tmp_array = imgs.concat([e.target.result]);
+        setImgs(tmp_array);
+      };
+    }
+  };
+  console.log(profileUploadImg);
+
   return (
     <SignUpInputFormBox>
       <InputCard>
-        <p>아이디 :</p>
+        <div>아이디 :</div>
         <input type="text" placeholder="아이디를 입력하세요" />
       </InputCard>
       <InputCard>
-        <p>비밀번호 :</p>
+        <div>비밀번호 :</div>
         <input type="password" placeholder="비밀번호 입력하라 해" />
       </InputCard>
       <InputCard>
-        <p>비밀번호 확인 :</p>
-        <input type="password" placeholder="비밀번호 확인하라 해"/>
+        <div>비밀번호 확인 :</div>
+        <input type="password" placeholder="비밀번호 확인하라 해" />
       </InputCard>
       <InputCard>
-        <p>프로필 사진 :</p>
-        <input type="file" multiple/>
+        <div>프로필 사진 :</div>
+        <label htmlFor="picInput">사진 업로드</label>
+        <input
+          id="picInput"
+          type="file"
+          accept={"image/*"}
+          onChange={checkPictureCorrect}
+        />
       </InputCard>
       <InputCard>
-        <p></p>
+        <div />
+        {img && <img src={img} height={"32px"} width={"32px"} />}
+        <small ref={imagePreviewNameRef} style={{ color: "black" }}></small>
+      </InputCard>
+      <InputCard>
+        <div/>
+        <small ref={SignUpAttentionRef}></small>
+      </InputCard>
+      <InputCard>
+        <div></div>
         <button>
           <span>회원가입</span>
         </button>
@@ -59,32 +122,70 @@ const SignUpInputFormBox = styled.form`
       background: linear-gradient(180deg, #ffb33b, #ffa00a);
     }
   }
+
+  #picInput {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
   @media ${devices.mobileL} {
     width: 90%;
     margin: 20px auto;
   }
 `;
+
 const InputCard = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
   margin: 5px 0;
-  p {
+  div {
     width: 120px;
     font-size: 0.8rem;
     font-weight: bolder;
     text-align: right;
     @media ${devices.mobileL} {
-        display:none;
+      display: none;
     }
   }
   input {
-    height: 1.5rem;
+    height: 1.8rem;
     margin-left: 5px;
   }
-  @media ${devices.mobileL} {
-        justify-content:center;
+  label {
+    display: inline-block;
+    padding: 5px;
+    margin-left: 5px;
+    color: #ffa00a;
+    font-size: 12px;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #cdcdcd;
+    border-radius: 4px;
+    &:hover {
+      background-color: #ffa00a;
+      color: #fff;
     }
+  }
+  small {
+    color: red;
+    margin-left: 5px;
+  }
+  img {
+    margin-left: 5px;
+  }
+
+  @media ${devices.mobileL} {
+    justify-content: center;
+  }
 `;
 
 export default SignUpInputForm;

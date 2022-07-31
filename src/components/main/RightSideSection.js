@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { devices } from "../device";
+import { devices } from "../../device";
 
-import InfoBox from "./InfoBox";
-import SignInModal from "./modal/SignInModal";
+import InfoBox from "../InfoBox";
+import SignInModal from "../modal/SignInModal";
 
 const RightSideSection = () => {
   const scrollPosition = useSelector((state) => state.clutters.scrollPosition);
@@ -27,9 +27,12 @@ const Box = styled.div`
   top: 60px;
 
   width: 282px;
-  height: ${window.innerHeight - 80}px;
+  height: 90vh;
 
   @media ${devices.laptop} {
+    display: none;
+  }
+  @media (max-height: 500px) {
     display: none;
   }
 `;
