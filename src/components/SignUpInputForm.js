@@ -21,7 +21,12 @@ const SignUpInputForm = () => {
       SignUpAttentionRef.current.innerText =
         "파일 사이즈는 3MB까지만 가능합니다.";
       return;
+    } else if (!e.target?.files[0]) {
+      imagePreviewNameRef.current.style.width = "0px";
+      SignUpAttentionRef.current.innerText = "";
+      return;
     } else if (!e.target?.files[0]?.name.match(correctForm)) {
+      imagePreviewNameRef.current.style.width = "0px";
       SignUpAttentionRef.current.innerText = "이미지 파일만 업로드 가능합니다.";
       return;
     }
