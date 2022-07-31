@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { devices } from "../device";
-import IconButton from "./buttons/IconButton";
+import { useSelector } from "react-redux";
+import { devices } from "../../device";
+import IconButton from "../buttons/IconButton";
 
 const LeftSideSection = () => {
+  const scrollPosition = useSelector((state) => state.clutters.scrollPosition);
+  console.log(scrollPosition);
   const [leftBarCount, setLeftBarCount] = React.useState("0");
   const MainIconBoxRef = React.useRef(null);
   const TimeIconBoxRef = React.useRef(null);
@@ -25,9 +28,14 @@ const LeftSideSection = () => {
   }, [leftBarCount]);
 
   return (
-      <Box>
-        <FlexBox>
-          <div ref={MainIconBoxRef} onClick={()=>{setLeftBarCount("0")}}>
+    <Box style={{ backgroundColor: `${scrollPosition < 60 ? "#fff" : "#f5f5f5"}` }}>
+      <FlexBox style={{ display: `${scrollPosition < 60 ? "flex" : "none"}` }}>
+        <div
+          ref={MainIconBoxRef}
+          onClick={() => {
+            setLeftBarCount("0");
+          }}
+        >
           <IconButton
             iconName={"faFire"}
             to={"/"}
@@ -36,8 +44,13 @@ const LeftSideSection = () => {
             width={"100%"}
             margin={"20px"}
           />
-          </div>
-          <div ref={TimeIconBoxRef} onClick={()=>{setLeftBarCount("1")}}>
+        </div>
+        <div
+          ref={TimeIconBoxRef}
+          onClick={() => {
+            setLeftBarCount("1");
+          }}
+        >
           <IconButton
             iconName={"faClock"}
             to={"/"}
@@ -46,9 +59,9 @@ const LeftSideSection = () => {
             width={"100%"}
             margin={"20px"}
           />
-          </div>
-        </FlexBox>
-      </Box>
+        </div>
+      </FlexBox>
+    </Box>
   );
 };
 
@@ -57,7 +70,7 @@ const FlexBox = styled.div`
   flex-direction: column;
   margin: 20px 5px 0;
   width: 100%;
-  font-size:.82rem;
+  font-size: 0.82rem;
 `;
 
 const Box = styled.div`
@@ -66,14 +79,14 @@ const Box = styled.div`
   top: 61px;
 
   width: 182px;
-  height: ${window.innerHeight - 120}px;
+  height: 100vh;
   border-radius: 4px 0 0 4px;
-  background-color:#fff;
+  background-color: #fff;
 
   @media ${devices.mobileL} {
     display: none;
   }
-  @media (max-height : 500px) {
+  @media (max-height: 500px) {
     display: none;
   }
 `;

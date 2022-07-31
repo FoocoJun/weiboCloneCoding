@@ -5,7 +5,7 @@ const NotFoundPage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <h1>잘못된 접근입니다.</h1>
+      <h1>환영합니다.</h1>
       <button onClick={() => navigate("/")}>Main</button>
     </>
   );
