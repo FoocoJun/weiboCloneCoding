@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { devices } from "../device";
-import IconButton from "./buttons/IconButton";
+import { devices } from "../../device";
+import IconButton from "../buttons/IconButton";
 
 const LeftSideSection = () => {
   const scrollPosition = useSelector((state) => state.clutters.scrollPosition);

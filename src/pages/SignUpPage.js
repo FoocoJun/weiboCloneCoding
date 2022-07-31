@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import SignUpInputForm from "../SignUpInputForm";
-import ToSignInBox from "../ToSignInBox";
-import { devices } from "../../device";
-import Copywrite from "../Copywrite";
+import SignUpInputForm from "../components/SignUpInputForm";
+import ToSignInBox from "../components/ToSignInBox";
+import { devices } from "../device";
+import Copywrite from "../components/Copywrite";
 
 const SignUpPage = () => {
   return (

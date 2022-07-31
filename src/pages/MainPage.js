@@ -11,6 +11,8 @@ import DetailModal from "../components/modal/DetailModal";
 import SignInModal from "../components/modal/SignInModal";
 
 import RightSideSection from "../components/main/RightSideSection";
+import NotFoundPage from "./NotFoundPage";
+import { devices } from "../device";
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -49,6 +51,7 @@ const MainPage = () => {
       <Routes>
         <Route path="/detail/:postid" element={<DetailModal />} />
         <Route path="/signin" element={<SignInModal />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
@@ -61,6 +64,9 @@ const MainFlexSection = styled.div`
   width: 90%;
   max-width: 1140px;
   margin: 0 auto;
+  @media ${devices.mobileL} {
+    width: 100%;
+  }
 `;
 
 export default MainPage;

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import { ModalBg, ModalBody } from "../../styled";
 
 const SignInModal = () => {
   const navigate = useNavigate();
@@ -94,38 +95,6 @@ const SignInModal = () => {
   );
 };
 
-const ModalBg = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  display: block;
-
-  background-color: rgba(0, 0, 0, 0.4);
-`;
-
-const ModalBody = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 100;
-
-  width: fit-content;
-  height: fit-content;
-
-  padding: 5px;
-
-  text-align: center;
-
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-
-  transform: translateX(-50%) translateY(-50%);
-`;
 
 const Box = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import IconButton from "./buttons/IconButton";
-import { devices } from "../device";
+import IconButton from "../buttons/IconButton";
+import { devices } from "../../device";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";

@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { devices } from "../device";
+import { devices } from "../../device";
 
-import InfoBox from "./InfoBox";
-import SignInModal from "./modal/SignInModal";
+import InfoBox from "../InfoBox";
+import SignInModal from "../modal/SignInModal";
 
 const RightSideSection = () => {
   const scrollPosition = useSelector((state) => state.clutters.scrollPosition);
