@@ -27,9 +27,12 @@ const Box = styled.div`
   top: 60px;
 
   width: 282px;
-  height: ${window.innerHeight - 80}px;
+  height: 90vh;
 
   @media ${devices.laptop} {
+    display: none;
+  }
+  @media (max-height: 500px) {
     display: none;
   }
 `;

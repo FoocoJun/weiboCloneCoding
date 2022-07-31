@@ -11,16 +11,14 @@ const FeedCardBody = () => {
       </div>
       <div>
         <Image src={"https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/102893638_2581742102086544_6593111894341743143_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=AGf_uEXqtrkAX8W1udC&_nc_oc=AQmHPeum_qX_qW-oeADENqPGrMXXo2e70y1LxAebEABms3P_GPc6-s4nRVPj_3_r4L0&tn=80rR6QnwQZXm_AhZ&_nc_ht=scontent-ssn1-1.xx&oh=00_AT_GCYebID7cxPW7CZW28Qru4gfX49BeW_aZ0j2TNuOQVg&oe=63098351"} alt="" />
-        <Image src={"https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/103278082_2581742165419871_7633937106233100916_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=DnCZrnIGkYYAX_OE6uM&tn=80rR6QnwQZXm_AhZ&_nc_ht=scontent-ssn1-1.xx&oh=00_AT9ep1DudExZ40eJ8rCfyx2GgJ1b0Ry-o6bmAiW42meEPw&oe=630A5DE2"} alt="" />
-        <Image src={"https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/39921104_2113054948955264_2209281144988368896_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=5oUdZvQNvlUAX-uZUnI&_nc_ht=scontent-ssn1-1.xx&oh=00_AT_WAkieUEpe8GJpYrauPZxKDfc4zXc4Y8qx2x8_9LUQKg&oe=630A3E61"} alt="" />
-        <Image src={"https://scontent-ssn1-1.xx.fbcdn.net/v/t1.18169-9/21369198_1903287996598628_3463504372893856744_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=CKyuSASWsqYAX92feb2&_nc_ht=scontent-ssn1-1.xx&oh=00_AT8-iRR_BckF5zKu22oWpfofVeyDCKspYKeZzyp502t8Ig&oe=630BDAB7"} alt="" />
       </div>
     </StoryAndPictures>
   );
 };
 
 const StoryAndPictures = styled(ColumnFlexDiv)`
-  padding-left: 55px;
+  padding-left: 65px;
+  padding-right: 15px;
   height: fit-content;
   justify-content: space-between;
   img {
@@ -28,6 +26,7 @@ const StoryAndPictures = styled(ColumnFlexDiv)`
     aspect-ratio: 1/1;
     border-radius: 4px;
     margin: 2px;
+    object-fit: cover;
     cursor:zoom-in;
     &:hover{
       filter:brightness(80%)

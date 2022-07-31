@@ -34,7 +34,11 @@ const ProfileAndName = styled(RowFlexDiv)`
   }
 `;
 const NameAndTime = styled(ColumnFlexDiv)`
-  padding-left: 5px;
+  padding-left: 10px;
+  position: relative;
+  top:6px;
+  
+
   div {
     display:flex;
     justify-content:center;
@@ -45,7 +49,10 @@ const NameAndTime = styled(ColumnFlexDiv)`
   }
   small {
     color:grey;
+    position: relative;
+    bottom:4px;
     padding-bottom: 5px;
+    font-size: 12px;
   }
 `;
 

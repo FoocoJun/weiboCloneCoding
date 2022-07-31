@@ -36,6 +36,9 @@ const Box = styled.div`
   @media ${devices.laptop} {
     width: 100%;
   }
+  @media (max-height: 500px) {
+    width: 100%;
+  }
 `;
 
 export default CenterFeedSection;
