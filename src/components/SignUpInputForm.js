@@ -67,7 +67,6 @@ const SignUpInputForm = () => {
           id="picInput"
           type="file"
           accept={"image/*"}
-          multiple
           onChange={checkPictureCorrect}
         />
       </InputCard>

@@ -45,7 +45,6 @@ const MainPage = () => {
         <CenterFeedSection />
         <RightSideSection/>
       </MainFlexSection>
-      메인 페이지입니다!
       <Routes>
         <Route path="/detail/:postid" element={<DetailModal />} />
         <Route path="/signin" element={<SignInModal />} />

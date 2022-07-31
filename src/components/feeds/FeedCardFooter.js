@@ -26,6 +26,7 @@ const LikeAndComments = styled(RowFlexDiv)`
   color: grey;
   div:hover {
     color: orange;
+    text-shadow: 1px 1px 10px orange;
     cursor: pointer;
   }
   span{

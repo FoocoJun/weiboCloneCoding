@@ -106,7 +106,7 @@ const HeaderNavBar = () => {
                 회원가입
               </SignUpButton>
               <PostButton>
-                <PostIcon icon={faPenToSquare} color={"white"} size={"1x"} />
+                <PostIcon icon={faPenToSquare} color={"white"} size={"1x"} onClick={()=>{navigate('/post')}}/>
               </PostButton>
             </FlexBox>
           </RightSideBox>
