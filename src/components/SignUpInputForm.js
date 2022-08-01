@@ -52,7 +52,8 @@ const SignUpInputForm = () => {
       };
     }
   };
-
+  
+  // 서브밋 함수
   const submitToSignUp = (e) => {
     e.preventDefault()
     let tmpSignupData = {

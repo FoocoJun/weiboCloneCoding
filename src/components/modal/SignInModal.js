@@ -9,6 +9,17 @@ import { ModalBg, ModalBody } from "../../styled";
 
 const SignInModal = () => {
   const navigate = useNavigate();
+  const signInUsernameRef = React.useRef();
+  const signInPasswordRef = React.useRef();
+
+  const submitToSignin = (e) => {
+    e.preventDefault();
+    let tmpSignInData = {
+      username: signInUsernameRef.current.value,
+      password: signInPasswordRef.current.value,
+    };
+    console.log(tmpSignInData);
+  };
   return (
     <>
       <ModalBg
@@ -18,7 +29,7 @@ const SignInModal = () => {
       ></ModalBg>
       <ModalBody>
         <Box>
-          <LogIn onSubmit={()=>{}}>
+          <LogIn onSubmit={submitToSignin}>
             <div
               className="Idbox"
               style={{
@@ -45,6 +56,7 @@ const SignInModal = () => {
                   margin: "9px 0px 0px 10px",
                   border: "none",
                 }}
+                ref={signInUsernameRef}
                 required
               />
             </div>
@@ -76,6 +88,7 @@ const SignInModal = () => {
                   margin: "9px 0px 0px 10px",
                   border: "none",
                 }}
+                ref={signInPasswordRef}
                 required
               />
             </div>

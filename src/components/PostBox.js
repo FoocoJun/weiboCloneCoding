@@ -91,7 +91,10 @@ const PostBox = () => {
     }
     setImgs(imgs);
   };
+  console.log(imgs)
 
+
+  // 서브밋 함수
   const submitToPost = (e) => {
     e.preventDefault();
     let tmpPostData = {
