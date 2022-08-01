@@ -4,12 +4,15 @@ import FeedCardBody from "./FeedCardBody";
 import FeedCardFooter from "./FeedCardFooter";
 import FeedCardHeader from "./FeedCardHeader";
 
-const Feed = () => {
+const Feed = ({tmpPost}) => {
+  const postForHeader = {username:tmpPost.username,profileimage:tmpPost.profileimage,date:tmpPost.date};
+  const postForBody = {images:tmpPost.images, contents:tmpPost.contents}
+  const postForFooter = {commentCount:tmpPost.commentCount, like:tmpPost.like}
   return (
     <FeedCard>
-      <FeedCardHeader />
-      <FeedCardBody />
-      <FeedCardFooter />
+      <FeedCardHeader postForHeader={postForHeader}/>
+      <FeedCardBody postForBody={postForBody} />
+      <FeedCardFooter postForFooter={postForFooter} />
     </FeedCard>
   );
 };

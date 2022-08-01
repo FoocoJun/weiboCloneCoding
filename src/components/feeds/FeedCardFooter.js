@@ -5,14 +5,14 @@ import { faCommentDots, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
 import { RowFlexDiv } from "../../styled";
 
-const FeedCardFooter = () => {
+const FeedCardFooter = ({postForFooter}) => {
   return (
     <LikeAndComments>
       <div>
-        <FontAwesomeIcon icon={faCommentDots} size={"xl"} /> <span>21</span>
+        <FontAwesomeIcon icon={faCommentDots} size={"xl"} /> <span>{postForFooter.commentCount}</span>
       </div>
       <div>
-        <FontAwesomeIcon icon={faThumbsUp} size={"xl"} /> <span>16</span>
+        <FontAwesomeIcon icon={faThumbsUp} size={"xl"} /> <span>{postForFooter.like}</span>
       </div>
     </LikeAndComments>
   );
