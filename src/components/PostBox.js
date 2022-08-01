@@ -8,11 +8,13 @@ import { devices } from "../device";
 const PostBox = () => {
   const [postUploadImg, setPostUploadImg] = React.useState([]);
   const [img, setImg] = React.useState(""); //이미지 미리보기
-  const [imgs, setImgs] = React.useState([]); //이미지들 미리보기
+  let [imgs, setImgs] = React.useState([]); //이미지들 미리보기
   const attentionRef = React.useRef(null);
   const imagePreviewNameRef = React.useRef(null);
 
-  const [postCurrentLength, setPostCurrentLength] = React.useState(11); //이미지들 미리보기
+  const postContentsRef = React.useRef();
+
+  const [postCurrentLength, setPostCurrentLength] = React.useState(11); //현재 글자 수
 
   const checkPictureCorrect = (e) => {
     imagePreviewNameRef.current.style.width = "150px";
@@ -25,27 +27,56 @@ const PostBox = () => {
     imagePreviewNameRef.current.innerText = null;
     setPostUploadImg(null);
     setImg(null);
+    //흠.... setter함수를 2회 이상 사용시 한번에 모아 처리하느라 예상과 달라짐.
+    imgs = [];
 
     const correctForm = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
+    //단일 파일 체크 후
     if (e.target.files[0]?.size > 3 * 1024 * 1024) {
       imagePreviewNameRef.current.style.width = "0px";
       attentionRef.current.innerText = "파일 사이즈는 3MB까지만 가능합니다.";
+      setImgs([]);
       return;
     } else if (!e.target?.files[0]) {
       imagePreviewNameRef.current.style.width = "0px";
       attentionRef.current.innerText = "";
+      setImgs([]);
       return;
     } else if (!e.target?.files[0]?.name.match(correctForm)) {
       imagePreviewNameRef.current.style.width = "0px";
       attentionRef.current.innerText = "이미지 파일만 업로드 가능합니다.";
+      setImgs([]);
       return;
+    }
+    //다중파일 중 섞여있을 때 체크
+    for (let i = 0; i < e.target.files.length; i++) {
+      if (i == 3) {
+        imagePreviewNameRef.current.style.width = "0px";
+        attentionRef.current.innerText = "3장만. 돈없어요.";
+        setImgs([]);
+        return;
+      } else if (e.target.files[i]?.size > 3 * 1024 * 1024) {
+        imagePreviewNameRef.current.style.width = "0px";
+        attentionRef.current.innerText = "파일 사이즈는 3MB까지만 가능합니다.";
+        setImgs([]);
+        return;
+      } else if (!e.target?.files[i]) {
+        imagePreviewNameRef.current.style.width = "0px";
+        attentionRef.current.innerText = "";
+        setImgs([]);
+        return;
+      } else if (!e.target?.files[i]?.name.match(correctForm)) {
+        imagePreviewNameRef.current.style.width = "0px";
+        attentionRef.current.innerText = "이미지 파일만 업로드 가능합니다.";
+        setImgs([]);
+        return;
+      }
     }
     attentionRef.current.style.width = "0px";
 
     let array = Array.from(e.target.files);
     let copyPreview = [...array];
     setPostUploadImg(copyPreview); //업로드 원본 파일'들' state : 추후 게시글 다중 업로드
-    console.log(copyPreview);
     imagePreviewNameRef.current.innerText = copyPreview[0].name;
 
     for (let i = 0; i < array.length; i++) {
@@ -55,14 +86,23 @@ const PostBox = () => {
         setImg(e.target.result); //미리보기 이미지 state
 
         //여러 사진의 DataURL 결과물들을 imgs state에 담음
-        let tmp_array = imgs.concat([e.target.result]);
-        setImgs(tmp_array);
+        imgs.push(e.target.result);
       };
     }
+    setImgs(imgs);
+  };
+
+  const submitToPost = (e) => {
+    e.preventDefault();
+    let tmpPostData = {
+      contents: postContentsRef.current.value,
+      image: postUploadImg,
+    };
+    console.log(tmpPostData);
   };
 
   return (
-    <form onSubmit={()=>{console.log(img)}}>
+    <form onSubmit={submitToPost}>
       <PostBoxCard>
         <PostBoxHeader>有什么新鲜事想告诉大家？</PostBoxHeader>
         <PostBoxBody>
@@ -71,13 +111,17 @@ const PostBox = () => {
           </div>
           <PostBoxTextArea
             placeholder="Your content"
+            ref={postContentsRef}
             onChange={(e) => setPostCurrentLength(e.target.value.length)}
           ></PostBoxTextArea>
         </PostBoxBody>
         <PostBoxFooter>
           <label htmlFor="postImage">
             <FontAwesomeIcon icon={faImage} size={"xl"} />
-            {img && <img src={img} />}
+            {imgs &&
+              imgs.map((val, idx) => {
+                return <img key={"PostBoxFooterImg" + idx} src={val} />;
+              })}
             <div ref={imagePreviewNameRef}></div>
             <span ref={attentionRef}></span>
           </label>
@@ -86,7 +130,9 @@ const PostBox = () => {
             type={"file"}
             accept={"image/*"}
             onChange={checkPictureCorrect}
-          />          
+            max={"3"}
+            multiple
+          />
           <button>올리기</button>
         </PostBoxFooter>
       </PostBoxCard>
@@ -135,6 +181,10 @@ const PostBoxFooter = styled(RowFlexDiv)`
   align-items: center;
   label {
     display: flex;
+    @media ${devices.mobileL} {
+      width: 100%;
+      justify-content: flex-start;
+    }
 
     color: #84c002;
     cursor: pointer;
@@ -181,7 +231,8 @@ const PostBoxFooter = styled(RowFlexDiv)`
     padding: 7px 20px;
     border-radius: 2px;
     @media ${devices.mobileL} {
-      padding: 3px;
+      margin: 5px;
+      width: 100%;
     }
   }
 
@@ -194,6 +245,9 @@ const PostBoxFooter = styled(RowFlexDiv)`
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+  }
+  @media ${devices.mobileL} {
+    flex-direction: column;
   }
 `;
 

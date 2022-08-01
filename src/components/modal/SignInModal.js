@@ -18,7 +18,7 @@ const SignInModal = () => {
       ></ModalBg>
       <ModalBody>
         <Box>
-          <LogIn>
+          <LogIn onSubmit={()=>{}}>
             <div
               className="Idbox"
               style={{
@@ -45,6 +45,7 @@ const SignInModal = () => {
                   margin: "9px 0px 0px 10px",
                   border: "none",
                 }}
+                required
               />
             </div>
 
@@ -75,6 +76,7 @@ const SignInModal = () => {
                   margin: "9px 0px 0px 10px",
                   border: "none",
                 }}
+                required
               />
             </div>
 
