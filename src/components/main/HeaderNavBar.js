@@ -105,7 +105,7 @@ const HeaderNavBar = () => {
               >
                 회원가입
               </SignUpButton>
-              <PostButton onClick={()=>{navigate('/post')}}>
+              <PostButton onClick={()=>{navigate('/post'); window.scrollTo(0,0);}}>
                 <PostIcon icon={faPenToSquare} color={"white"} size={"1x"} />
               </PostButton>
             </FlexBox>
@@ -239,6 +239,15 @@ const PostButton = styled(NavBarButton)`
   color: #fff;
 
   background: linear-gradient(180deg, #f87c45, #f36126);
+  @media ${devices.mobileL} {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    opacity:.4;
+    &:hover{
+      opacity:1;
+    }
+  }
 `;
 const PostIcon = styled(FontAwesomeIcon)`
   display: flex;
