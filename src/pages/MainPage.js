@@ -11,8 +11,8 @@ import DetailModal from "../components/modal/DetailModal";
 import SignInModal from "../components/modal/SignInModal";
 
 import RightSideSection from "../components/main/RightSideSection";
-import NotFoundPage from "./NotFoundPage";
 import { devices } from "../device";
+import { ColumnFlexDiv } from "../styled";
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -31,28 +31,34 @@ const MainPage = () => {
     setScrollPosition(scrolled);
   };
 
-
   React.useEffect(() => {
     window.addEventListener("scroll", listenToScroll);
   }, []);
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     dispatch(keepScrollPosition(parseInt(scrollPosition * 100)));
-  })
+  });
   return (
-    <div>
-      
+    <ColumnFlexDiv>
+      {/* <OnTopVideo
+        loop="loop"
+        autoPlay
+        preload=""
+        muted="muted"
+        src="https://a.sinaimg.cn/mintra/pic/2112130543/weibo_login.mp4"
+        poster="https://a.sinaimg.cn/mintra/pic/2112130400/18weibo_login.png"
+      /> */}
       <HeaderNavBar />
       <MainFlexSection>
         <LeftSideSection />
         <CenterFeedSection />
-        <RightSideSection/>
+        <RightSideSection />
       </MainFlexSection>
       <Routes>
         <Route path="/detail/:postid" element={<DetailModal />} />
         <Route path="/signin" element={<SignInModal />} />
       </Routes>
-    </div>
+    </ColumnFlexDiv>
   );
 };
 
@@ -63,9 +69,25 @@ const MainFlexSection = styled.div`
   width: 90%;
   max-width: 1140px;
   margin: 0 auto;
+  /* margin: 270px auto 0; */
   @media ${devices.mobileL} {
     width: 100%;
+    /* margin: 0 auto; */
   }
 `;
+// const OnTopVideo = styled.video`
+//   height: 330px;
+//   width: 100%;
+//   position: absolute;
+//   left: 50%;
+//   top: 0%;
+//   transform: translateX(-50%);
+//   bottom: 0;
+//   z-index: 999;
+//   object-fit: cover;
+//   @media ${devices.mobileL} {
+//     display:none;
+//   }
+// `;
 
 export default MainPage;
