@@ -4,11 +4,23 @@ import { ColumnFlexDiv } from "../../styled";
 import Comment from "./Comment";
 
 const CommentsBox = () => {
+
+  const postCommentRef = React.useRef();
+
+  const submitToComment = (e) => {
+    e.preventDefault();
+    let tmpCommentData = {
+      comment: postCommentRef.current.value,
+    };
+    console.log(tmpCommentData);
+  };
+
+
   return (
     <CommentBoxCard>
-      <CommentInputAndComment>
+      <CommentInputAndComment onSubmit={submitToComment}>
         <div className="CommentInput">
-          <input type="text" placeholder="发布你的评论" />
+          <input ref={postCommentRef} type="text" placeholder="发布你的评论" />
         </div>
         <div className="CommentPost">
           <button type="">评论</button>
@@ -41,7 +53,9 @@ const CommentBoxCard = styled(ColumnFlexDiv)`
     }
   }
 `;
-const CommentInputAndComment = styled(ColumnFlexDiv)`
+const CommentInputAndComment = styled.form`
+  display: flex;
+  flex-direction: column;
   .CommentInput {
     height: 40px;
     padding: 5px 10px;
@@ -65,9 +79,9 @@ const CommentInputAndComment = styled(ColumnFlexDiv)`
     flex-direction: row;
     justify-content: end;
 
-    padding-bottom:10px;
+    padding-bottom: 10px;
     border-bottom: solid 1px #cdcdcd;
-    border-color: rgba(0,0,0,0.05);
+    border-color: rgba(0, 0, 0, 0.05);
     button {
       display: flex;
       justify-content: center;
