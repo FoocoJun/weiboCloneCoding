@@ -10,6 +10,7 @@ export const RowFlexDiv = styled.div`
   flex-direction: row;
 `;
 
+
 // 모달창
 // 사용법
 // <ModalBg onClick={()=>{navigate('/배경')}}/>
@@ -27,11 +28,13 @@ export const ModalBg = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
+
 export const ModalBody = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: 100;
+
 
   width: fit-content;
   height: fit-content;

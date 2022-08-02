@@ -1,4 +1,5 @@
 import React from "react";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,7 @@ import { ModalBg, ModalBody } from "../../styled";
 
 const SignInModal = () => {
   const navigate = useNavigate();
+
   return (
     <>
       <ModalBg
