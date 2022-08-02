@@ -6,7 +6,7 @@ import IconButton from "../buttons/IconButton";
 
 const LeftSideSection = () => {
   const scrollPosition = useSelector((state) => state.clutters.scrollPosition);
-  console.log(scrollPosition);
+  // console.log(scrollPosition);
   const [leftBarCount, setLeftBarCount] = React.useState("0");
   const MainIconBoxRef = React.useRef(null);
   const TimeIconBoxRef = React.useRef(null);

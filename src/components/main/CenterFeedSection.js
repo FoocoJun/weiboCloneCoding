@@ -9,7 +9,7 @@ import PostBox from "../PostBox";
 const CenterFeedSection = () => {
   const tmpTmpPost = [
     {
-      postid: 1,
+      postid: 0,
       username: "송하준",
       profileimage:
         "https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-1/33348141_2029080354019391_8693798106786955264_n.jpg?stp=dst-jpg_p160x160&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=JwId3zDFgcAAX-aqnGM&_nc_oc=AQnpYYjCh6tLBqEFJn4627NAbdmIKy8ki4c68pcef28aBu3b-we8cDSUgLLIPI6ISjw&tn=80rR6QnwQZXm_AhZ&_nc_ht=scontent-ssn1-1.xx&oh=00_AT9lA-24SlT05i3k53ixf-6Ow3AeT_R9sGCBzLFHmc6AsQ&oe=630BD836",

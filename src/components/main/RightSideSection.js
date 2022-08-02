@@ -8,7 +8,7 @@ import SignInModal from "../modal/SignInModal";
 
 const RightSideSection = () => {
   const scrollPosition = useSelector((state) => state.clutters.scrollPosition);
-  console.log(scrollPosition);
+  // console.log(scrollPosition);
   return (
     <Box>
       <Countainer
