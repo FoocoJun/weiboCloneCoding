@@ -3,18 +3,16 @@ import styled from "styled-components";
 import { devices } from "../../device";
 import { ColumnFlexDiv, RowFlexDiv } from "../../styled";
 
-const Comment = () => {
+const Comment = ({ tmpComment }) => {
   return (
     <CommentBox>
-      <img src="https://img1.daumcdn.net/thumb/S1200x630/?fname=https://t1.daumcdn.net/news/202010/26/NEWS1/20201026063015355wgfm.jpg" />
+      <img src={tmpComment.writer.profile} />
       <UsernameAndContents>
         <UsernameAndTime>
-          <span className="commenter">이범규</span>
-          <span className="time">22-8-1 12:47</span>
+          <span className="commenter">{tmpComment.writer.username}</span>
+          <span className="time">{tmpComment.createdAt}</span>
         </UsernameAndTime>
-        <div className="commentContents">
-          클론 코딩은 잘 하고 있지?
-        </div>
+        <div className="commentContents">{tmpComment.content}</div>
       </UsernameAndContents>
     </CommentBox>
   );

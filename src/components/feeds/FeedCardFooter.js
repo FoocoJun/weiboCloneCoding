@@ -39,7 +39,7 @@ const FeedCardFooter = ({ postForFooter }) => {
           <span>{postForFooter.like}</span>
         </div>
       </LikeAndComments>
-      {isCommentsBoxOpen && <CommentsBox />}
+      {isCommentsBoxOpen && <CommentsBox postid={postForFooter.postid}/>}
     </div>
   );
 };
