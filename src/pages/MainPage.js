@@ -30,7 +30,6 @@ const MainPage = () => {
 
     setScrollPosition(scrolled);
   };
-
   React.useEffect(() => {
     window.addEventListener("scroll", listenToScroll);
   }, []);
