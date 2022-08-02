@@ -3,31 +3,34 @@ import styled from "styled-components";
 import { devices } from "../device";
 
 const SignUpInputForm = () => {
-  const [isPictureCorrectForm, setIsPictureCorrectForm] = React.useState(false);
   const [profileUploadImg, setProfileUploadImg] = React.useState([]);
   const [img, setImg] = React.useState(""); //이미지 미리보기
   const [imgs, setImgs] = React.useState([]); //이미지들 미리보기
-  const SignUpAttentionRef = React.useRef();
+  const signUpAttentionRef = React.useRef();
   const imagePreviewNameRef = React.useRef();
 
+  const signUpUsernameRef = React.useRef();
+  const signUpPasswordRef = React.useRef();
+  const signUpPWCheckRef = React.useRef();
+
   const checkPictureCorrect = (e) => {
-    SignUpAttentionRef.current.innerText = null;
+    signUpAttentionRef.current.innerText = null;
     imagePreviewNameRef.current.innerText = null;
     setProfileUploadImg(null);
     setImg(null);
 
     const correctForm = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
     if (e.target.files[0]?.size > 3 * 1024 * 1024) {
-      SignUpAttentionRef.current.innerText =
+      signUpAttentionRef.current.innerText =
         "파일 사이즈는 3MB까지만 가능합니다.";
       return;
     } else if (!e.target?.files[0]) {
       imagePreviewNameRef.current.style.width = "0px";
-      SignUpAttentionRef.current.innerText = "";
+      signUpAttentionRef.current.innerText = "";
       return;
     } else if (!e.target?.files[0]?.name.match(correctForm)) {
       imagePreviewNameRef.current.style.width = "0px";
-      SignUpAttentionRef.current.innerText = "이미지 파일만 업로드 가능합니다.";
+      signUpAttentionRef.current.innerText = "이미지 파일만 업로드 가능합니다.";
       return;
     }
 
@@ -49,21 +52,33 @@ const SignUpInputForm = () => {
       };
     }
   };
-  console.log(profileUploadImg);
+  
+  // 서브밋 함수
+  const submitToSignUp = (e) => {
+    e.preventDefault()
+    let tmpSignupData = {
+      username: signUpUsernameRef.current.value,
+      password: signUpPasswordRef.current.value,
+      passwordCheck: signUpPWCheckRef.current.value,
+      userprofileimage: profileUploadImg,
+    };
+
+    console.log(tmpSignupData)
+  };
 
   return (
-    <SignUpInputFormBox>
+    <SignUpInputFormBox onSubmit={submitToSignUp}>
       <InputCard>
         <div>아이디 :</div>
-        <input type="text" placeholder="아이디를 입력하세요" />
+        <input ref={signUpUsernameRef} type="text" placeholder="아이디를 입력하세요" required />
       </InputCard>
       <InputCard>
         <div>비밀번호 :</div>
-        <input type="password" placeholder="비밀번호 입력하라 해" />
+        <input ref={signUpPasswordRef} type="password" placeholder="비밀번호 입력하라 해" required />
       </InputCard>
       <InputCard>
         <div>비밀번호 확인 :</div>
-        <input type="password" placeholder="비밀번호 확인하라 해" />
+        <input ref={signUpPWCheckRef} type="password" placeholder="비밀번호 확인하라 해" required />
       </InputCard>
       <InputCard>
         <div>프로필 사진 :</div>
@@ -73,6 +88,7 @@ const SignUpInputForm = () => {
           type="file"
           accept={"image/*"}
           onChange={checkPictureCorrect}
+          required
         />
       </InputCard>
       <InputCard>
@@ -81,8 +97,8 @@ const SignUpInputForm = () => {
         <small ref={imagePreviewNameRef} style={{ color: "black" }}></small>
       </InputCard>
       <InputCard>
-        <div/>
-        <small ref={SignUpAttentionRef}></small>
+        <div />
+        <small ref={signUpAttentionRef}></small>
       </InputCard>
       <InputCard>
         <div></div>

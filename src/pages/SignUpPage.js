@@ -8,7 +8,7 @@ import Copywrite from "../components/Copywrite";
 const SignUpPage = () => {
   return (
     <>
-      <Bg></Bg>
+      <Bg/>
       <SignUpPageSection>
         {/* 넓이 990px 박스 */}
         <SignUpPageBox>
