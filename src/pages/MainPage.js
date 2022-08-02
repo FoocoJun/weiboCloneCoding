@@ -68,6 +68,7 @@ const MainFlexSection = styled.div`
   width: 90%;
   max-width: 1140px;
   margin: 0 auto;
+  z-index:0;
   /* margin: 270px auto 0; */
   @media ${devices.mobileL} {
     width: 100%;

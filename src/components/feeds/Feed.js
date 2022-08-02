@@ -24,7 +24,6 @@ const FeedCard = styled.div`
   margin-bottom: 10px;
   background-color: #fff;
   width: 100%;
-  /* height: 300px; */
   height: fit-content;
   padding: 10px;
 `;
