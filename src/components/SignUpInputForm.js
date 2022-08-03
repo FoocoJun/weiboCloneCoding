@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { devices } from "../device";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 const SignUpInputForm = () => {
+  const navigate = useNavigate();
   const [profileUploadImg, setProfileUploadImg] = React.useState([]);
   const [img, setImg] = React.useState(""); //이미지 미리보기
   const [imgs, setImgs] = React.useState([]); //이미지들 미리보기
@@ -52,10 +56,10 @@ const SignUpInputForm = () => {
       };
     }
   };
-  
+
   // 서브밋 함수
-  const submitToSignUp = (e) => {
-    e.preventDefault()
+  const submitToSignUp = async (e) => {
+    e.preventDefault();
     let tmpSignupData = {
       username: signUpUsernameRef.current.value,
       password: signUpPasswordRef.current.value,
@@ -63,22 +67,50 @@ const SignUpInputForm = () => {
       userprofileimage: profileUploadImg,
     };
 
-    console.log(tmpSignupData)
+    console.log(tmpSignupData);
+
+    try {
+      await axios({
+        method: "post",
+        url: process.env.REACT_APP_DB_HOST + "/api/user/signup",
+        data: tmpSignupData,
+      }).then((Response) => console.log(Response));
+      alert("회원가입 성공");
+      navigate("/");
+    } catch (error) {
+      alert(error.response.data.message);
+      console.log(error);
+    }
   };
 
   return (
     <SignUpInputFormBox onSubmit={submitToSignUp}>
       <InputCard>
         <div>아이디 :</div>
-        <input ref={signUpUsernameRef} type="text" placeholder="아이디를 입력하세요" required />
+        <input
+          ref={signUpUsernameRef}
+          type="text"
+          placeholder="아이디를 입력하세요"
+          required
+        />
       </InputCard>
       <InputCard>
         <div>비밀번호 :</div>
-        <input ref={signUpPasswordRef} type="password" placeholder="비밀번호 입력하라 해" required />
+        <input
+          ref={signUpPasswordRef}
+          type="password"
+          placeholder="비밀번호 입력하라 해"
+          required
+        />
       </InputCard>
       <InputCard>
         <div>비밀번호 확인 :</div>
-        <input ref={signUpPWCheckRef} type="password" placeholder="비밀번호 확인하라 해" required />
+        <input
+          ref={signUpPWCheckRef}
+          type="password"
+          placeholder="비밀번호 확인하라 해"
+          required
+        />
       </InputCard>
       <InputCard>
         <div>프로필 사진 :</div>

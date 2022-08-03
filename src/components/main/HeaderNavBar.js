@@ -5,9 +5,11 @@ import { devices } from "../../device";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HeaderNavBar = () => {
   const [underBarCount, setUnderBarCount] = React.useState("Bar/center");
+  const authorization = useSelector((state) => state.users.authorization);
   const TubeIconBoxRef = React.useRef(null);
   const MainIconBoxRef = React.useRef(null);
   const SendIconBoxRef = React.useRef(null);
@@ -57,7 +59,7 @@ const HeaderNavBar = () => {
 
   return (
     <>
-      <Header>
+      <Header style={{ height: `${authorization && 60}px` }}>
         <NavBarDiv>
           <LeftSideBox>
             <img src={process.env.PUBLIC_URL + "/pngwing.png"} height="32px" />
@@ -90,7 +92,7 @@ const HeaderNavBar = () => {
             </HeightBox>
           </CenterBox>
           <RightSideBox>
-            <FlexBox>
+            <FlexBox style={{ display: `${authorization && "none"}` }}>
               <SignInButton
                 onClick={() => {
                   navigate("/signin");
@@ -105,9 +107,30 @@ const HeaderNavBar = () => {
               >
                 회원가입
               </SignUpButton>
-              <PostButton onClick={()=>{navigate('/post'); window.scrollTo(0,0);}}>
+              <PostButton
+                onClick={() => {
+                  navigate("/post");
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <PostIcon icon={faPenToSquare} color={"white"} size={"1x"} />
               </PostButton>
+            </FlexBox>
+            <FlexBox
+              style={{
+                display: `${authorization ? "flex" : "none"}`,
+                margin: `${authorization && 0}px`,
+              }}
+            >
+              <AuthPostButton
+                style={{ display: `${authorization && "inherit"}` }}
+                onClick={() => {
+                  navigate("/post");
+                  window.scrollTo(0, 0);
+                }}
+              >
+                <PostIcon icon={faPenToSquare} color={"white"} size={"1x"} />
+              </AuthPostButton>
             </FlexBox>
           </RightSideBox>
         </NavBarDiv>
@@ -149,7 +172,7 @@ const LeftSideBox = styled.div`
   }
   em {
     font-size: 1.5rem;
-    font-weight:bolder;
+    font-weight: bolder;
   }
 `;
 
@@ -243,12 +266,17 @@ const PostButton = styled(NavBarButton)`
     position: fixed;
     right: 20px;
     bottom: 20px;
-    opacity:.4;
-    &:hover{
-      opacity:1;
+    opacity: 0.4;
+    &:hover {
+      opacity: 1;
     }
   }
 `;
+
+const AuthPostButton = styled(PostButton)`
+  display: none;
+`;
+
 const PostIcon = styled(FontAwesomeIcon)`
   display: flex;
   justify-content: center;
