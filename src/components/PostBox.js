@@ -98,10 +98,14 @@ const PostBox = () => {
   const submitToPost = (e) => {
     e.preventDefault();
     let sessionStorage=window.sessionStorage;
-    let tmpPostData = {
-      contents: postContentsRef.current.value,
-      image: postUploadImg,
-    };
+    // let tmpPostData = {
+    //   contents: postContentsRef.current.value,
+    //   image: postUploadImg,
+    // };
+    let tmpPostData = new FormData()
+    tmpPostData.append('contents',postContentsRef.current.value)
+    tmpPostData.append('data',postUploadImg[0])
+
     console.log(tmpPostData);
 
     axios({
