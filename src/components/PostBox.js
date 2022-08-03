@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ColumnFlexDiv, RowFlexDiv } from "../styled";
 import { devices } from "../device";
+import axios from "axios";
 
 const PostBox = () => {
   const [postUploadImg, setPostUploadImg] = React.useState([]);
@@ -91,17 +92,28 @@ const PostBox = () => {
     }
     setImgs(imgs);
   };
-  console.log(imgs)
 
 
   // 서브밋 함수
   const submitToPost = (e) => {
     e.preventDefault();
+    let sessionStorage=window.sessionStorage;
     let tmpPostData = {
       contents: postContentsRef.current.value,
       image: postUploadImg,
     };
     console.log(tmpPostData);
+
+    axios({
+      method: "post",
+      url: process.env.REACT_APP_DB_HOST + "/api/post",
+      data: tmpPostData,
+      headers: {authorization:sessionStorage.getItem("authorization")}
+    }).then((Response) => {
+      console.log(Response);
+      alert("글작성 성공");
+    }).catch((err)=>{alert(err.response.data.message);
+    console.log(err);})
   };
 
   return (

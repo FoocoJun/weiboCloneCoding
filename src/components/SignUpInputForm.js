@@ -69,18 +69,16 @@ const SignUpInputForm = () => {
 
     console.log(tmpSignupData);
 
-    try {
-      await axios({
+      axios({
         method: "post",
         url: process.env.REACT_APP_DB_HOST + "/api/user/signup",
         data: tmpSignupData,
-      }).then((Response) => console.log(Response));
-      alert("회원가입 성공");
-      navigate("/");
-    } catch (error) {
-      alert(error.response.data.message);
-      console.log(error);
-    }
+      }).then((Response) => {
+        console.log(Response);
+        alert("회원가입 성공");
+        navigate("/");
+      }).catch((err)=>{alert(err.response.data.message);
+      console.log(err);})
   };
 
   return (
