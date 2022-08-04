@@ -47,7 +47,7 @@ const LeftSideSection = () => {
           }}
         >
           <IconButton
-            iconName={"faFire"}
+            iconName={"faClock"}
             to={"/"}
             size={"lg"}
             string={"热门微博"}
@@ -62,7 +62,7 @@ const LeftSideSection = () => {
           }}
         >
           <IconButton
-            iconName={"faClock"}
+            iconName={"faFire"}
             to={"/"}
             size={"lg"}
             string={"热门榜单"}

@@ -107,14 +107,14 @@ const HeaderNavBar = () => {
               >
                 회원가입
               </SignUpButton>
-              <PostButton
+              {authorization && <PostButton
                 onClick={() => {
                   navigate("/post");
                   window.scrollTo(0, 0);
                 }}
               >
                 <PostIcon icon={faPenToSquare} color={"white"} size={"1x"} />
-              </PostButton>
+              </PostButton>}
             </FlexBox>
             <FlexBox
               style={{
