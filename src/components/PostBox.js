@@ -5,8 +5,10 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ColumnFlexDiv, RowFlexDiv } from "../styled";
 import { devices } from "../device";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PostBox = () => {
+  const navigate = useNavigate();
   const [postUploadImg, setPostUploadImg] = React.useState([]);
   const [img, setImg] = React.useState(""); //이미지 미리보기
   let [imgs, setImgs] = React.useState([]); //이미지들 미리보기
@@ -116,6 +118,7 @@ const PostBox = () => {
     }).then((Response) => {
       console.log(Response);
       alert("글작성 성공");
+      navigate('/')
     }).catch((err)=>{alert(err.response.data.message);
     console.log(err);})
   };

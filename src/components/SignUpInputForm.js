@@ -60,12 +60,17 @@ const SignUpInputForm = () => {
   // 서브밋 함수
   const submitToSignUp = async (e) => {
     e.preventDefault();
-    let tmpSignupData = {
-      username: signUpUsernameRef.current.value,
-      password: signUpPasswordRef.current.value,
-      passwordCheck: signUpPWCheckRef.current.value,
-      userprofileimage: profileUploadImg,
-    };
+    // let tmpSignupData = {
+    //   username: signUpUsernameRef.current.value,
+    //   password: signUpPasswordRef.current.value,
+    //   passwordCheck: signUpPWCheckRef.current.value,
+    //   userprofileimage: profileUploadImg,
+    // };
+    let tmpSignupData = new FormData()
+    tmpSignupData.append('username',signUpUsernameRef.current.value)
+    tmpSignupData.append('password',signUpPasswordRef.current.value)
+    tmpSignupData.append('passwordCheck',signUpPWCheckRef.current.value)
+    tmpSignupData.append('userProfileImage',profileUploadImg[0])
 
     console.log(tmpSignupData);
 
@@ -118,7 +123,7 @@ const SignUpInputForm = () => {
           type="file"
           accept={"image/*"}
           onChange={checkPictureCorrect}
-          required
+          // required
         />
       </InputCard>
       <InputCard>
