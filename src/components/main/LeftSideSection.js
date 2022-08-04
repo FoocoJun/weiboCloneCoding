@@ -62,7 +62,7 @@ const LeftSideSection = () => {
           }}
         >
           <IconButton
-            iconName={"faFire"}
+            iconName={"faArrowDownZA"}
             to={"/"}
             size={"lg"}
             string={"热门榜单"}

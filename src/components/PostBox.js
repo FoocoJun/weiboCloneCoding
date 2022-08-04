@@ -154,6 +154,7 @@ const PostBox = () => {
             onChange={checkPictureCorrect}
             max={"3"}
             multiple
+            required
           />
           <button>올리기</button>
         </PostBoxFooter>

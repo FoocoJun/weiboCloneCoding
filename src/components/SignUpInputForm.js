@@ -123,7 +123,7 @@ const SignUpInputForm = () => {
           type="file"
           accept={"image/*"}
           onChange={checkPictureCorrect}
-          // required
+          required
         />
       </InputCard>
       <InputCard>
