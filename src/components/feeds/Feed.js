@@ -7,7 +7,7 @@ import FeedCardHeader from "./FeedCardHeader";
 const Feed = ({tmpPost}) => {
   const postForHeader = {username:tmpPost.username,profileimage:tmpPost.profileimage,date:tmpPost.date};
   const postForBody = {images:tmpPost.images, contents:tmpPost.contents}
-  const postForFooter = {commentCount:tmpPost.commentCount, like:tmpPost.like, postid:tmpPost.postid}
+  const postForFooter = {commentcount:tmpPost.commentcount, like:tmpPost.like, postid:tmpPost.postid}
   return (
     <FeedCard>
       <FeedCardHeader postForHeader={postForHeader}/>

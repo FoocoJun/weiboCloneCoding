@@ -1,12 +1,11 @@
+import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 import { ColumnFlexDiv } from "../../styled";
 import Comment from "./Comment";
+import { useSelector } from "react-redux";
 
-const CommentsBox = ({postid}) => {
-  const postCommentRef = React.useRef();
-  const [showMore, setShowMore] = React.useState(0);
-
+const CommentsBox = ({ postid }) => {
   // /api/post/{postid}/comment
 
   const tmpTmpComment = [
@@ -71,8 +70,18 @@ const CommentsBox = ({postid}) => {
       createdAt: "22-8-2 16:27",
     },
   ];
-
+  const postCommentRef = React.useRef();
+  const [showMore, setShowMore] = React.useState(0);
+  console.log("postid", postid);
+  const authorization = useSelector((state) => state.users.authorization);
   const [tmpComment, setTmpComment] = React.useState(tmpTmpComment);
+  const [reload, setreload] = React.useState(["모가조을까"]);
+
+  React.useEffect(() => {
+    axios(process.env.REACT_APP_DB_HOST + `/api/post/${postid}/comment`)
+      .then((res) => {console.log(res); /*response에서 댓글 불러와야됨*/})
+      .catch((err) => console.log(err));
+  }, [reload]);
 
   let filteredComments = tmpComment.filter((val, idx) => idx < 2 ** showMore);
 
@@ -87,18 +96,35 @@ const CommentsBox = ({postid}) => {
       comment: postCommentRef.current.value,
     };
     console.log(tmpCommentData);
+    axios({
+      method: "post",
+      url: process.env.REACT_APP_DB_HOST + `/api/post/${postid}/comment`,
+      data: tmpCommentData,
+      headers: { authorization: sessionStorage.getItem("authorization") },
+    })
+      .then((res) => {
+        console.log(res);
+        setreload([...reload]);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <CommentBoxCard>
-      <CommentInputAndComment onSubmit={submitToComment}>
-        <div className="CommentInput">
-          <input ref={postCommentRef} type="text" placeholder="发布你的评论" />
-        </div>
-        <div className="CommentPost">
-          <button type="">评论</button>
-        </div>
-      </CommentInputAndComment>
+      {authorization && (
+        <CommentInputAndComment onSubmit={submitToComment}>
+          <div className="CommentInput">
+            <input
+              ref={postCommentRef}
+              type="text"
+              placeholder="发布你的评论"
+            />
+          </div>
+          <div className="CommentPost">
+            <button type="">评论</button>
+          </div>
+        </CommentInputAndComment>
+      )}
       <span>按时间</span>
       <div>
         {filteredComments.map((val, idx) => {
