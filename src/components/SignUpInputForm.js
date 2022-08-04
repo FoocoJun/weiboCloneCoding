@@ -70,7 +70,7 @@ const SignUpInputForm = () => {
     tmpSignupData.append('username',signUpUsernameRef.current.value)
     tmpSignupData.append('password',signUpPasswordRef.current.value)
     tmpSignupData.append('passwordCheck',signUpPWCheckRef.current.value)
-    tmpSignupData.append('userProfileImage',profileUploadImg[0])
+    tmpSignupData.append('userprofileimage',profileUploadImg[0])
 
     console.log(tmpSignupData);
 

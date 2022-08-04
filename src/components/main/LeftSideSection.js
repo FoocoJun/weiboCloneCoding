@@ -1,20 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { devices } from "../../device";
 import IconButton from "../buttons/IconButton";
+import { keepFilterData } from "../../redux/modules/filters";
 
 const LeftSideSection = () => {
   const scrollPosition = useSelector((state) => state.clutters.scrollPosition);
   // console.log(scrollPosition);
-  const [leftBarCount, setLeftBarCount] = React.useState("0");
+  const [leftBarCount, setLeftBarCount] = React.useState("id");
   const MainIconBoxRef = React.useRef(null);
   const TimeIconBoxRef = React.useRef(null);
+  const dispatch = useDispatch();
+  let sessionStorage = window.sessionStorage;
 
   React.useEffect(() => {
     //부끄럽다. 알고리즘 공부하자..
+    dispatch(keepFilterData(leftBarCount));
     switch (leftBarCount) {
-      case "1": {
+      case "content": {
         MainIconBoxRef.current.style.color = "black";
         TimeIconBoxRef.current.style.color = "#ff8200";
         break;
@@ -27,13 +31,19 @@ const LeftSideSection = () => {
     }
   }, [leftBarCount]);
 
+  React.useEffect(() => {
+    sessionStorage.setItem("leftBar", leftBarCount);
+  }, [leftBarCount]);
+
   return (
-    <Box style={{ backgroundColor: `${scrollPosition < 60 ? "#fff" : "#f5f5f5"}` }}>
+    <Box
+      style={{ backgroundColor: `${scrollPosition < 60 ? "#fff" : "#f5f5f5"}` }}
+    >
       <FlexBox style={{ display: `${scrollPosition < 60 ? "flex" : "none"}` }}>
         <div
           ref={MainIconBoxRef}
           onClick={() => {
-            setLeftBarCount("0");
+            setLeftBarCount("id");
           }}
         >
           <IconButton
@@ -48,7 +58,7 @@ const LeftSideSection = () => {
         <div
           ref={TimeIconBoxRef}
           onClick={() => {
-            setLeftBarCount("1");
+            setLeftBarCount("content");
           }}
         >
           <IconButton

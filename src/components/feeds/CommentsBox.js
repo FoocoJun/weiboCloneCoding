@@ -74,12 +74,18 @@ const CommentsBox = ({ postid }) => {
   const [showMore, setShowMore] = React.useState(0);
   console.log("postid", postid);
   const authorization = useSelector((state) => state.users.authorization);
-  const [tmpComment, setTmpComment] = React.useState(tmpTmpComment);
+  const [tmpComment, setTmpComment] = React.useState([]);
   const [reload, setreload] = React.useState(["모가조을까"]);
 
   React.useEffect(() => {
-    axios(process.env.REACT_APP_DB_HOST + `/api/post/${postid}/comment`)
-      .then((res) => {console.log(res); /*response에서 댓글 불러와야됨*/})
+    axios({
+      method: "post",
+      url: process.env.REACT_APP_DB_HOST + `/api/get/${postid}/comments`,
+    })
+      .then((res) => {
+        console.log(res.data); /*response에서 댓글 불러와야됨*/
+        setTmpComment([...res.data])
+      })
       .catch((err) => console.log(err));
   }, [reload]);
 
@@ -93,7 +99,7 @@ const CommentsBox = ({ postid }) => {
   const submitToComment = (e) => {
     e.preventDefault();
     let tmpCommentData = {
-      comment: postCommentRef.current.value,
+      contents: postCommentRef.current.value,
     };
     console.log(tmpCommentData);
     axios({

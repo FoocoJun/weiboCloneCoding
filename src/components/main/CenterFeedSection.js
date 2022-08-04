@@ -7,12 +7,17 @@ import Feed from "../feeds/Feed";
 import PostBox from "../PostBox";
 import axios from "axios";
 
-const CenterFeedSection = () => {
-  const [tmpPost, setTmpPost] = React.useState([]);
+const CenterFeedSection = ({leftbar}) => {
   const obsRef = React.useRef(null);
   const preventRef = React.useRef(true); //옵저버 중복 실행 방지
   const [showMore, setShowMore] = React.useState(0);
   const [filteredPost, setFilteredPost] = React.useState([]);
+
+
+  React.useEffect(()=>{
+    setShowMore(0);
+    setFilteredPost([]);
+  },[leftbar])
 
   const obsHandler = (entries) => {
     const target = entries[0];
@@ -21,7 +26,7 @@ const CenterFeedSection = () => {
       setShowMore((prev) => prev + 1);
     }
   };
-  console.log(showMore)
+
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(obsHandler, { threshold: 0.1 });
@@ -34,7 +39,7 @@ const CenterFeedSection = () => {
   const getMoreList = React.useCallback(() => {
     axios
       .get(process.env.REACT_APP_DB_HOST + "/api/posts", {
-        params: { page: showMore, sortby: "id" },
+        params: { page: showMore, sortby: leftbar },
       })
       .then((Response) => {
         setFilteredPost([...filteredPost, ...Response.data]);
