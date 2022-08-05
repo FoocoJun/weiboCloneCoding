@@ -32,14 +32,14 @@ const FeedCardFooter = ({ postForFooter }) => {
       <LikeAndComments>
         <div ref={commentsRef} onClick={ToggleCommentBox}>
           <FontAwesomeIcon icon={faCommentDots} size={"xl"} />{" "}
-          <span>{postForFooter.commentCount}</span>
+          <span>{postForFooter.commentcount}</span>
         </div>
         <div>
           <FontAwesomeIcon icon={faThumbsUp} size={"xl"} />{" "}
           <span>{postForFooter.like}</span>
         </div>
       </LikeAndComments>
-      {isCommentsBoxOpen && <CommentsBox />}
+      {isCommentsBoxOpen && <CommentsBox postid={postForFooter.postid}/>}
     </div>
   );
 };

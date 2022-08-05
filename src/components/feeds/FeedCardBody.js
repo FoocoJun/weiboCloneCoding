@@ -8,15 +8,15 @@ const FeedCardBody = ({ postForBody }) => {
     <StoryAndPictures>
       <div>{postForBody.contents}</div>
       <div>
-        {postForBody.images[1] &&
+        {/* {postForBody.images[1] &&
           postForBody.images.map((val, idx) => {
             return (
               <Image key={"StoryAndPicturesImage" + idx} src={val} height={"132px"} alt="" />
             );
-          })}
-        {!postForBody.images[1] && (
-          <Image src={postForBody.images[0]} width={"100%"} height={"180px"} alt="" />
-        )}
+          })} */}
+        {/* {postForBody.images && ( */}
+          <Image src={postForBody.images} width={"100%"} height={"180px"} alt="" />
+        {/* )} */}
       </div>
     </StoryAndPictures>
   );

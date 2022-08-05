@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
 import styled from "styled-components";
@@ -17,6 +17,8 @@ import { ColumnFlexDiv } from "../styled";
 const MainPage = () => {
   const dispatch = useDispatch();
   const [scrollPosition, setScrollPosition] = React.useState(0);
+  const leftbar = useSelector((state) => state.filters.leftbar);
+  console.log(leftbar);
 
   const listenToScroll = () => {
     const winScroll =
@@ -30,7 +32,6 @@ const MainPage = () => {
 
     setScrollPosition(scrolled);
   };
-
   React.useEffect(() => {
     window.addEventListener("scroll", listenToScroll);
   }, []);
@@ -51,7 +52,11 @@ const MainPage = () => {
       <HeaderNavBar />
       <MainFlexSection>
         <LeftSideSection />
-        <CenterFeedSection />
+        {leftbar == "username" ? (
+          <CenterFeedSection leftbar={leftbar} />
+        ) : (
+          <CenterFeedSection leftbar={leftbar} />
+        )}
         <RightSideSection />
       </MainFlexSection>
       <Routes>
