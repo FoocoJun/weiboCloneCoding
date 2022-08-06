@@ -4,8 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ColumnFlexDiv, RowFlexDiv } from "../styled";
 import { devices } from "../device";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PostBox = () => {
+  const navigate = useNavigate();
   const [postUploadImg, setPostUploadImg] = React.useState([]);
   const [img, setImg] = React.useState(""); //이미지 미리보기
   let [imgs, setImgs] = React.useState([]); //이미지들 미리보기
@@ -91,17 +94,33 @@ const PostBox = () => {
     }
     setImgs(imgs);
   };
-  console.log(imgs)
 
 
   // 서브밋 함수
   const submitToPost = (e) => {
     e.preventDefault();
-    let tmpPostData = {
-      contents: postContentsRef.current.value,
-      image: postUploadImg,
-    };
+    let sessionStorage=window.sessionStorage;
+    // let tmpPostData = {
+    //   contents: postContentsRef.current.value,
+    //   image: postUploadImg,
+    // };
+    let tmpPostData = new FormData()
+    tmpPostData.append('contents',postContentsRef.current.value)
+    tmpPostData.append('data',postUploadImg[0])
+
     console.log(tmpPostData);
+
+    axios({
+      method: "post",
+      url: process.env.REACT_APP_DB_HOST + "/api/post",
+      data: tmpPostData,
+      headers: {authorization:sessionStorage.getItem("authorization")}
+    }).then((Response) => {
+      console.log(Response);
+      alert("글작성 성공");
+      navigate('/')
+    }).catch((err)=>{alert(err.response.data.message);
+    console.log(err);})
   };
 
   return (
@@ -135,6 +154,7 @@ const PostBox = () => {
             onChange={checkPictureCorrect}
             max={"3"}
             multiple
+            required
           />
           <button>올리기</button>
         </PostBoxFooter>

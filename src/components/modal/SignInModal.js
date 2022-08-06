@@ -3,23 +3,41 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import { ModalBg, ModalBody } from "../../styled";
+import axios from "axios";
+import { keepAuthDataMW } from "../../redux/modules/users";
 
 const SignInModal = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const signInUsernameRef = React.useRef();
   const signInPasswordRef = React.useRef();
 
-  const submitToSignin = (e) => {
+  const submitToSignin = async (e) => {
     e.preventDefault();
     let tmpSignInData = {
       username: signInUsernameRef.current.value,
       password: signInPasswordRef.current.value,
     };
     console.log(tmpSignInData);
+
+    dispatch(keepAuthDataMW(tmpSignInData, navigate));
+    // await axios({
+    //   method: "post",
+    //   url: process.env.REACT_APP_DB_HOST + "/login",
+    //   data: tmpSignInData,
+    // })
+    //   .then((Response) => {
+    //     console.log(Response.headers.authorization);
+    //     alert("로그인 성공");
+    //     sessionStorage.setItem("authorization", Response.headers.authorization);
+    //     navigate("/");
+    //   })
+    //   .catch((err) => console.log(err));
   };
   return (
     <>
@@ -110,7 +128,6 @@ const SignInModal = () => {
     </>
   );
 };
-
 
 const Box = styled.div`
   display: flex;

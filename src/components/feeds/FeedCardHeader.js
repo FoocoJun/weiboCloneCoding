@@ -15,7 +15,7 @@ const FeedCardHeader = ({postForHeader}) => {
       </div>
       <NameAndTime>
         <div>{postForHeader.username}</div>
-        <small>{postForHeader.date}</small>
+        <small>{postForHeader.date.substring(0,10)}</small>
       </NameAndTime>
     </ProfileAndName>
   );
